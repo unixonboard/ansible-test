@@ -2,3 +2,4 @@
 name: to download the images
   - type:
   - yum: nginx
+    rpm:
