@@ -2,10 +2,9 @@
 - name: install tomcat sercer
   hosts: all
   become: true
-  vars:
-    - tomcat_url: https://downloads.apache.org/tomcat/tomcat-9/v9.0.43/bin/apache-tomcat-9.0.43.tar.gz
-    - tomcat_package: apache-tomcat-9.0.43
-  
+  vars-file:
+    - ./vars_web
+    
   tasks:
   - name: install java
     yum:
