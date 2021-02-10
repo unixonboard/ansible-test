@@ -1,0 +1,27 @@
+---
+- name: install tomcat sercer
+  hosts: all
+  become: true
+  vars:
+    - tomcat_url: https://downloads.apache.org/tomcat/tomcat-9/v9.0.43/bin/apache-tomcat-9.0.43.tar.gz
+    - tomcat_package: apache-tomcat-9.0.43
+  
+  tasks:
+  - name: install java
+    yum:
+      name: java
+      state: latest
+  
+  - name : download tomcat package 
+    get_url:
+        url: " {{ tomcat_url }} "
+        dest: /usr/local
+  
+  - name: extract tomcat package
+    unarchive:
+        src: /usr/local/{{ tomcat_package }}.tar.gz
+        dest: /usr/local
+        remote_src: yes
+
+  - name: start tomcat 
+    shell: nohup /usr/local/{{ tomcat_package }}/bin/startup.sh
