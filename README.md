@@ -18,8 +18,8 @@ chmod 400 ansiadm.pem
 
 ssh-agent bash
 
-cp ansiadm.pem ~/.ssh/
+cp aws.pem ~/.ssh/
 
-ssh-add ~/.ssh/ansiadm.pem
+ssh-add ~/.ssh/aws.pem
 
 export ANSIBLE_HOST_KEY_CHECKING=False OR Disable the HOST_KEY_CHECKING=False in /etc/ansible/ansible.cfg file
